@@ -1,0 +1,853 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak - Performance Marketing Expert</title>
+    <meta name="description"
+        content="Deepak - Results-driven Performance Marketer with 2+ years experience in scaling brands through data-backed strategies. Google & Meta Ads Specialist.">
+    <meta name="keywords"
+        content="Performance Marketing, Google Ads, Meta Ads, Digital Marketing, SEO, SEM, Indian Marketer, Lead Generation, ROAS">
+    <meta name="author" content="Deepak">
+    <meta name="theme-color" content="#2563eb">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                fontFamily: {
+                    sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    display: ['"Space Grotesk"', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#4f46e5',
+                        dark: '#050505',
+                        surface: '#0a0a0a',
+                        whatsapp: '#25D366',
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                        'marquee': 'marquee 30s linear infinite',
+                        'spin-slow': 'spin 15s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'text-reveal': 'textReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)', filter: 'blur(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' },
+                        },
+                        textReveal: {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- External Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-dark dark:text-slate-200 transition-colors duration-500 selection:bg-primary selection:text-white overflow-x-hidden">
+
+    <!-- [NEW] Noise Texture Overlay -->
+    <div class="fixed inset-0 z-[1] bg-noise pointer-events-none opacity-40 mix-blend-overlay"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[9999] bg-slate-50 dark:bg-dark flex items-center justify-center">
+        <div class="flex flex-col items-center gap-4">
+            <div class="relative w-16 h-16">
+                <div class="absolute inset-0 border-4 border-slate-200 dark:border-white/10 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-primary rounded-full border-t-transparent animate-spin">
+                </div>
+            </div>
+            <span class="text-sm font-bold tracking-widest uppercase animate-pulse">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"
+        class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0 bg-grid-pattern pointer-events-none"></div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-50 dark:opacity-20 z-0">
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-6">
+        <nav
+            class="bg-white/70 dark:bg-surface/70 backdrop-blur-xl border border-slate-200 dark:border-white/10 rounded-full px-6 py-3 flex items-center gap-8 shadow-sm transition-all duration-300 w-full max-w-4xl justify-between md:justify-start reveal-on-scroll">
+
+            <a href="#"
+                class="text-xl font-bold font-display tracking-tight text-slate-900 dark:text-white hoverable magnetic-btn focus:outline-none relative z-20">
+                deepak<span class="text-primary">.</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium ml-auto relative z-20" id="desktop-menu">
+                <a href="#home"
+                    class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Home</a>
+                <a href="#about"
+                    class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">About</a>
+                <a href="#skill"
+                    class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Skill</a>
+                <a href="#experience"
+                    class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Experience</a>
+                <a href="#contact"
+                    class="px-5 py-2 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-xs hover:scale-105 transition-transform hoverable magnetic-btn">Hire
+                    Me</a>
+            </div>
+
+            <div
+                class="flex items-center gap-3 md:ml-4 border-l border-slate-200 dark:border-white/10 pl-4 md:pl-6 relative z-20">
+                <button id="theme-toggle" aria-label="Ganti Mode Gelap"
+                    class="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors hoverable magnetic-btn focus:outline-none">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="mobile-menu-btn" aria-label="Buka Menu"
+                    class="md:hidden text-slate-900 dark:text-white p-1 hoverable magnetic-btn focus:outline-none">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300">
+        <a href="#home" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Home</a>
+        <a href="#about" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">About</a>
+        <a href="#skill" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Skills</a>
+        <a href="#experience"
+            class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Experience</a>
+        <a href="#contact" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Contact</a>
+        <button id="close-menu" aria-label="Tutup Menu"
+            class="absolute top-8 right-8 text-slate-500 hover:text-black dark:hover:text-white hoverable">
+            <i class="fas fa-times text-2xl"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="section-spy relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left order-2 lg:order-1">
+                    <div
+                        class="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-sm mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span
+                            class="text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400">Open
+                            for Projects</span>
+                    </div>
+
+                    <!-- Masked Text Reveal Animation -->
+                    <h1
+                        class="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.1] md:leading-[0.9] tracking-tight mb-6 text-slate-900 dark:text-white">
+                        <!-- Line 1 -->
+                        <div class="hero-heading-line overflow-hidden">
+                            <span class="block">Performance</span>
+                        </div>
+
+                        <!-- Line 2: Gradient + Masking -->
+                        <div class="hero-heading-line overflow-hidden pb-2">
+                            <span
+                                class="block text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-secondary animate-gradient-x bg-[length:200%_auto]">Marketing</span>
+                        </div>
+
+                        <!-- Line 3 -->
+                        <div class="hero-heading-line overflow-hidden">
+                            <span class="block">Expert.</span>
+                        </div>
+                    </h1>
+
+                    <p
+                        class="hero-description text-lg text-slate-600 dark:text-slate-400 max-w-md mx-auto lg:mx-0 mb-10 leading-relaxed">
+                        Performance marketer with 4+ years experience across Meta, Google, Bing, and LinkedIn platforms.
+                        I turn ad spend into real business growth by combining <span
+                            class="text-slate-900 dark:text-white font-semibold">data, creativity, and customer
+                            psychology</span> to deliver profitable campaigns.
+                    </p>
+
+                    <div class="hero-buttons flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#approach"
+                            class="group relative px-8 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold overflow-hidden hover:scale-[1.02] transition-transform shadow-xl shadow-primary/10 hoverable magnetic-btn focus:outline-none">
+                            <span class="relative z-10">View My Work</span>
+                            <div
+                                class="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300">
+                            </div>
+                        </a>
+                        <a href="#contact"
+                            class="flex items-center justify-center w-12 h-12 rounded-full border border-slate-200 dark:border-white/20 hover:border-primary hover:text-primary transition-colors hoverable magnetic-btn focus:outline-none"
+                            aria-label="Scroll to Contact">
+                            <i class="fas fa-arrow-down animate-bounce"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="hero-image-container relative h-[400px] md:h-[600px] flex items-center justify-center order-1 lg:order-2 perspective-1000">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse-slow">
+                    </div>
+                    <div
+                        class="hero-circle-outer absolute w-64 h-64 md:w-96 md:h-96 border border-slate-200 dark:border-white/10 rounded-full animate-spin-slow">
+                    </div>
+                    <div
+                        class="hero-circle-middle absolute w-48 h-48 md:w-72 md:h-72 border border-dashed border-slate-300 dark:border-white/20 rounded-full animate-spin-slow [animation-direction:reverse]">
+                    </div>
+
+                    <div
+                        class="hero-profile-img hero-image-glow relative w-56 h-56 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-white/10 shadow-2xl animate-[float_6s_ease-in-out_infinite] z-10 group cursor-pointer hoverable magnetic-btn">
+                        <img src="images/photo1.png" alt="Deepak - Performance Marketer" width="800" height="800"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="about"
+        class="section-spy py-20 bg-white/50 dark:bg-white/5 border-y border-slate-200 dark:border-white/5 backdrop-blur-sm relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <h2 class="font-display text-4xl font-bold text-slate-900 dark:text-white mb-12 reveal-on-scroll">About Me
+                <span class="text-primary">.</span>
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                <div class="reveal-on-scroll">
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        My digital marketing journey started as a <span
+                            class="font-semibold text-slate-900 dark:text-white">meme creator</span>. What began as
+                        curiosity about attention and engagement soon evolved into a deep interest in performance
+                        marketing and business growth.
+                    </p>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        I built my foundation during my <span
+                            class="font-semibold text-slate-900 dark:text-white">diploma in Digital Marketing at Digital
+                            Academy 360</span>, where I gained structured knowledge in SEO, SEM, analytics, and paid
+                        media. During my internship phase, I worked hands-on with Google Ads, Meta Ads, WordPress, and
+                        analytics tools.
+                    </p>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        Today, I manage ad budgets of approximately <span
+                            class="font-semibold text-slate-900 dark:text-white">â‚¹5 crore per month</span>,
+                        consistently delivering high ROAS, optimized CAC, and measurable revenue growth across travel,
+                        food, manufacturing, and real estate industries.
+                    </p>
+                    <p class="text-lg italic text-primary font-semibold">
+                        "Marketing should directly impact revenue â€” not just impressions."
+                    </p>
+                </div>
+                <div class="relative reveal-on-scroll h-[400px] flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl animate-pulse-slow">
+                    </div>
+                    <div
+                        class="absolute w-64 h-64 border border-slate-200 dark:border-white/10 rounded-full animate-spin-slow">
+                    </div>
+                    <div
+                        class="w-48 h-48 rounded-full overflow-hidden border-4 border-white dark:border-white/10 shadow-2xl z-10">
+                        <img src="images/photo1.png" alt="Deepak" width="400" height="400"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Skills Section -->
+    <section id="skill" class="section-spy py-24 relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                    Key Skills<span class="text-primary">.</span>
+                </h2>
+                <p class="text-slate-500 max-w-lg mx-auto">
+                    Master of performance marketing, data analytics, and growth strategies.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Performance Marketing Box -->
+                <div class="skill-box reveal-on-scroll">
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white text-center mb-6">
+                        Performance Marketing</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <div class="skill-badge"><i class="fab fa-google text-2xl"
+                                style="color: #4285F4;"></i><span>Google Ads</span></div>
+                        <div class="skill-badge"><i class="fab fa-meta text-2xl" style="color: #0081FB;"></i><span>Meta
+                                Ads</span></div>
+                        <div class="skill-badge"><i class="fab fa-microsoft text-2xl"
+                                style="color: #00A4EF;"></i><span>Bing Ads</span></div>
+                        <div class="skill-badge"><i class="fab fa-linkedin text-2xl"
+                                style="color: #0A66C2;"></i><span>LinkedIn Ads</span></div>
+                        <div class="skill-badge"><i class="fas fa-chart-line text-2xl text-primary"></i><span>Campaign
+                                Scaling</span></div>
+                        <div class="skill-badge"><i class="fas fa-wallet text-2xl"
+                                style="color: #10b981;"></i><span>Budget Optimization</span></div>
+                    </div>
+                </div>
+
+                <!-- Analytics & Tracking Box -->
+                <div class="skill-box reveal-on-scroll delay-100">
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white text-center mb-6">Analytics
+                        & Tracking</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <div class="skill-badge"><i class="fab fa-google text-2xl"
+                                style="color: #4285F4;"></i><span>GA4</span></div>
+                        <div class="skill-badge"><i class="fab fa-google text-2xl"
+                                style="color: #FBBC05;"></i><span>Google Analytics</span></div>
+                        <div class="skill-badge"><i class="fas fa-tags text-2xl"
+                                style="color: #4285F4;"></i><span>Google Tag Manager</span></div>
+                        <div class="skill-badge"><i class="fas fa-bullseye text-2xl"
+                                style="color: #ef4444;"></i><span>Conversion Tracking</span></div>
+                        <div class="skill-badge"><i class="fas fa-filter text-2xl"
+                                style="color: #8b5cf6;"></i><span>Funnel Analysis</span></div>
+                        <div class="skill-badge"><i class="fas fa-database text-2xl"
+                                style="color: #06b6d4;"></i><span>Data Optimization</span></div>
+                    </div>
+                </div>
+
+                <!-- Growth & Strategy Box -->
+                <div class="skill-box reveal-on-scroll delay-200">
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white text-center mb-6">Growth &
+                        Strategy</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <div class="skill-badge"><i class="fas fa-filter text-2xl"
+                                style="color: #8b5cf6;"></i><span>Funnel Optimization</span></div>
+                        <div class="skill-badge"><i class="fas fa-users text-2xl"
+                                style="color: #3b82f6;"></i><span>Audience Segmentation</span></div>
+                        <div class="skill-badge"><i class="fas fa-flask text-2xl" style="color: #f59e0b;"></i><span>A/B
+                                Testing</span></div>
+                        <div class="skill-badge"><i class="fas fa-palette text-2xl"
+                                style="color: #ec4899;"></i><span>Creative Testing</span></div>
+                        <div class="skill-badge"><i class="fas fa-coins text-2xl" style="color: #10b981;"></i><span>CAC
+                                Optimization</span></div>
+                        <div class="skill-badge"><i class="fas fa-chart-bar text-2xl"
+                                style="color: #6366f1;"></i><span>ROAS Improvement</span></div>
+                    </div>
+                </div>
+
+                <!-- Marketing Tools Box -->
+                <div class="skill-box reveal-on-scroll delay-300">
+                    <h3 class="text-xl font-bold font-display text-slate-900 dark:text-white text-center mb-6">Marketing
+                        Tools</h3>
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <div class="skill-badge"><i class="fab fa-wordpress text-2xl"
+                                style="color: #21759B;"></i><span>WordPress</span></div>
+                        <div class="skill-badge"><i class="fab fa-shopify text-2xl"
+                                style="color: #7AB55C;"></i><span>Shopify</span></div>
+                        <div class="skill-badge"><i class="fas fa-paint-brush text-2xl"
+                                style="color: #00C4CC;"></i><span>Canva</span></div>
+                        <div class="skill-badge"><i class="fab fa-python text-2xl"
+                                style="color: #3776AB;"></i><span>Python</span></div>
+                        <div class="skill-badge"><i class="fas fa-address-book text-2xl"
+                                style="color: #DC2626;"></i><span>Zoho CRM</span></div>
+                        <div class="skill-badge"><i class="fab fa-google text-2xl"
+                                style="color: #34A853;"></i><span>Search Console</span></div>
+                        <div class="skill-badge"><i class="fas fa-table text-2xl"
+                                style="color: #0F9D58;"></i><span>Google Sheets</span></div>
+                        <div class="skill-badge"><i class="fas fa-file-alt text-2xl"
+                                style="color: #f59e0b;"></i><span>Reporting</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How I Approach Performance Marketing Section -->
+    <section id="approach"
+        class="section-spy py-24 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-[#080808] dark:to-surface relative z-10 overflow-hidden">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+                    How I Approach <br>Performance Marketing<span class="text-primary">.</span>
+                </h2>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg">
+                    A proven framework that turns strategy into measurable growth.
+                </p>
+            </div>
+
+            <!-- Main Framework -->
+            <div
+                class="bg-white dark:bg-surface p-8 md:p-12 rounded-3xl border border-slate-200 dark:border-white/10 mb-16 reveal-on-scroll">
+                <div class="text-center mb-12">
+                    <h3 class="text-2xl font-bold font-display text-slate-900 dark:text-white mb-4">My
+                        Funnel Formula
+                    </h3>
+                    <p class="text-lg text-primary font-semibold tracking-wide">Understand Goal → Build
+                        Funnel → Test →
+                        Optimize → Scale</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <div
+                            class="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl text-center h-full flex flex-col justify-between">
+                            <div class="text-4xl mb-4">🎯</div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">Understand Goals</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Customer behavior & intent
+                                analysis
+                            </p>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2">
+                            <i class="fas fa-arrow-right text-primary text-xl"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <div
+                            class="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl text-center h-full flex flex-col justify-between">
+                            <div class="text-4xl mb-4">🏗️</div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">Build Funnel</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Structured campaigns per
+                                funnel stage
+                            </p>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2">
+                            <i class="fas fa-arrow-right text-primary text-xl"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="relative">
+                        <div
+                            class="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl text-center h-full flex flex-col justify-between">
+                            <div class="text-4xl mb-4">🧪</div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">Test</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Creative, messaging &
+                                targeting tests
+                            </p>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2">
+                            <i class="fas fa-arrow-right text-primary text-xl"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="relative">
+                        <div
+                            class="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl text-center h-full flex flex-col justify-between">
+                            <div class="text-4xl mb-4">⚡</div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">Optimize</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Real business metrics
+                                focus</p>
+                        </div>
+                        <div class="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2">
+                            <i class="fas fa-arrow-right text-primary text-xl"></i>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="relative">
+                        <div
+                            class="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl text-center h-full flex flex-col justify-between">
+                            <div class="text-4xl mb-4">📈</div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-2">Scale</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400">Profitable growth only</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specializations Grid -->
+            <div class="reveal-on-scroll">
+                <h3 class="text-2xl font-bold font-display text-slate-900 dark:text-white mb-8 text-center">
+                    I Specialize
+                    In</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div
+                        class="p-6 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-crown text-primary"></i> High-Budget Campaigns
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Managing ₹5+ crore budgets
+                            efficiently</p>
+                    </div>
+                    <div
+                        class="p-6 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-users text-primary"></i> Lead Generation
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Cost-effective customer
+                            acquisition</p>
+                    </div>
+                    <div
+                        class="p-6 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-gem text-primary"></i> High-Ticket Funnels
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Complex conversion
+                            optimization</p>
+                    </div>
+                    <div
+                        class="p-6 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-bullseye text-primary"></i> Audience Refinement
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Intent-based targeting
+                            strategies</p>
+                    </div>
+                    <div
+                        class="p-6 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-palette text-primary"></i> Creative Strategy
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Psychology-driven ad creative
+                        </p>
+                    </div>
+                    <div
+                        class="p-6 bg-white dark:bg-surface border border-slate-200 dark:border-white/10 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1">
+                        <h4 class="font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                            <i class="fas fa-chart-bar text-primary"></i> Performance Stories
+                        </h4>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">Data storytelling & insights
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-spy py-24 bg-slate-50 dark:bg-[#080808]">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2
+                class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-16 text-center reveal-on-scroll">
+                Experience<span class="text-primary">.</span>
+            </h2>
+
+            <div class="relative border-l border-slate-200 dark:border-white/10 ml-4 md:ml-10 space-y-12">
+
+                <!-- Item 1 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll">
+                    <span
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3
+                            class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Senior Performance Marketing Executive</h3>
+                        <span
+                            class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">Current
+                            Role</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">Casagrand Premier Builder Ltd</p>
+                    <ul class="text-slate-500 text-sm space-y-2 max-w-2xl">
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Managing ₹5
+                            crore+
+                            monthly ad budgets across Google & Meta</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Driving
+                            9x–12x ROAS
+                            campaigns</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Achieving
+                            ₹28k–₹32k CAC
+                            for NRI-focused campaigns</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Improved
+                            lead-to-site
+                            visit ratio by 3x through automation and intent-driven creatives</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Built
+                            structured
+                            scaling frameworks for large-scale real estate launches</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll delay-100">
+                    <span
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3
+                            class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Senior Digital Marketing Executive</h3>
+                        <span
+                            class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">Oct
+                            2023 - Nov 2024</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">Vacation Feast Pvt Ltd</p>
+                    <ul class="text-slate-500 text-sm space-y-2 max-w-2xl">
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Planned and
+                            executed
+                            full-funnel campaigns</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Achieved up
+                            to 9.8x &
+                            12.7x ROAS on Meta & Google</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Reduced CPL
+                            using smart
+                            bidding and better targeting</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Improved
+                            organic
+                            traffic by 135% within 6 months through structured SEO</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll delay-200">
+                    <span
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3
+                            class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Digital Marketing Executive</h3>
+                        <span
+                            class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">2022
+                            - 2023</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">Goed Digital Pvt Ltd</p>
+                    <ul class="text-slate-500 text-sm space-y-2 max-w-2xl">
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Managed
+                            campaigns
+                            across travel, food, manufacturing, and B2B sectors</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Improved
+                            organic
+                            engagement by nearly 3x</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Reduced CPL
+                            by 20–30%
+                            with better targeting & content strategy</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Increased
+                            lead
+                            generation and conversion rates through optimization</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="relative pl-8 md:pl-12 group reveal-on-scroll delay-300">
+                    <span
+                        class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 group-hover:bg-primary transition-colors ring-4 ring-transparent group-hover:ring-primary/20"></span>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:items-center mb-2">
+                        <h3
+                            class="text-xl font-bold font-display text-slate-900 dark:text-white group-hover:text-primary transition-colors">
+                            Digital Marketing Intern</h3>
+                        <span
+                            class="text-xs font-bold px-2 py-1 rounded bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-300 w-fit">2020
+                            - 2021</span>
+                    </div>
+                    <p class="text-primary font-medium mb-2">Digital Academy 360</p>
+                    <ul class="text-slate-500 text-sm space-y-2 max-w-2xl">
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Worked
+                            hands-on with
+                            Google Ads, Meta Ads, WordPress, and Analytics</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Built
+                            strong
+                            foundations in tracking and campaign execution</li>
+                        <li class="flex gap-2"><span class="text-primary flex-shrink-0">•</span> Learned
+                            end-to-end
+                            campaign management and digital strategy basics</li>
+                    </ul>
+                </div>
+    </section>
+
+    <section id="contact" class="section-spy py-24 md:py-32 relative overflow-hidden bg-slate-100 dark:bg-[#080808]">
+        <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 max-w-5xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="text-center lg:text-left">
+                    <h2
+                        class="font-display text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-6 tracking-tighter leading-tight reveal-on-scroll">
+                        Let's Scale Your Business.<br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Together.</span>
+                    </h2>
+                    <p class="text-slate-500 mb-8 text-lg reveal-on-scroll delay-100">
+                        Whether you have a campaign in mind or want to discuss growth strategies, I'm here
+                        to help.
+                    </p>
+                    <div class="space-y-4 text-left hidden lg:block reveal-on-scroll delay-200">
+                        <a href="mailto:deepakugin@gmail.com"
+                            class="flex items-center gap-4 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hoverable">
+                            <i class="fas fa-envelope text-primary w-6"></i>
+                            <span>deepakugin@gmail.com</span>
+                        </a>
+                        <a href="tel:+919500928947"
+                            class="flex items-center gap-4 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hoverable">
+                            <i class="fas fa-phone text-primary w-6"></i>
+                            <span>+91 9500928947</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/deepak-u-a5039523b/" target="_blank"
+                            class="flex items-center gap-4 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hoverable">
+                            <i class="fab fa-linkedin text-primary w-6"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://open.spotify.com/show/3JmFLXQmOeYh38hX0GczOV?si=OMMAc3bHTMeV7PyJHsUTTg"
+                            target="_blank"
+                            class="flex items-center gap-4 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hoverable">
+                            <i class="fab fa-spotify text-primary w-6"></i>
+                            <span>Podcast</span>
+                        </a>
+                        <a href="https://www.youtube.com/@dk_xplores" target="_blank"
+                            class="flex items-center gap-4 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors hoverable">
+                            <i class="fab fa-youtube text-primary w-6"></i>
+                            <span>YouTube</span>
+                        </a>
+                        <div class="flex items-center gap-4 text-slate-600 dark:text-slate-400">
+                            <i class="fas fa-map-marker-alt text-primary w-6"></i>
+                            <span>India</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-white dark:bg-surface p-8 rounded-3xl shadow-xl border border-slate-200 dark:border-white/10 reveal-on-scroll delay-300">
+                    <form class="space-y-6" id="contact-form">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Name</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn"
+                                placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Email</label>
+                            <input type="email"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn"
+                                placeholder="your@email.com" required>
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Message</label>
+                            <textarea rows="4"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn"
+                                placeholder="Tell me about your campaign goals, budget, and industry..."
+                                required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-black rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform shadow-lg hoverable magnetic-btn focus:outline-none">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <footer
+                class="mt-24 pt-8 border-t border-slate-200 dark:border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 reveal-on-scroll">
+
+                <div>Â© <span id="year">2025</span> Deepak. All rights reserved.</div>
+            </footer>
+        </div>
+    </section>
+
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden">
+
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="modal-backdrop">
+        </div>
+
+        <div class="absolute inset-0 flex items-center justify-center p-4 pointer-events-none">
+            <div class="bg-white dark:bg-[#111] w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto border border-slate-200 dark:border-white/10"
+                id="modal-content">
+                <div class="relative">
+
+                    <button id="close-modal" aria-label="Tutup Modal"
+                        class="absolute top-4 right-4 w-10 h-10 bg-white/50 dark:bg-black/50 backdrop-blur rounded-full flex items-center justify-center text-slate-900 dark:text-white hover:bg-red-500 hover:text-white transition-colors z-10 hoverable focus:outline-none">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="h-64 md:h-96 w-full overflow-hidden">
+                        <img id="modal-image" src="" class="w-full h-full object-cover" alt="Detail Proyek">
+                    </div>
+
+                    <div class="p-8 md:p-12">
+                        <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                            <div>
+                                <span id="modal-category"
+                                    class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Category</span>
+                                <h2 id="modal-title"
+                                    class="text-3xl md:text-5xl font-display font-bold text-slate-900 dark:text-white">
+                                    Project Title</h2>
+                            </div>
+                            <a href="#"
+                                class="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-sm hover:scale-105 transition-transform whitespace-nowrap hoverable focus:outline-none">
+                                Visit Website <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                            <div class="md:col-span-2">
+                                <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">About the
+                                    Project</h3>
+                                <p id="modal-desc" class="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
+                                    Description is here.
+                                </p>
+                            </div>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4
+                                        class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">
+                                        Technology</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span
+                                            class="px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300">React</span>
+                                        <span
+                                            class="px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300">Tailwind</span>
+                                        <span
+                                            class="px-3 py-1 bg-slate-100 dark:bg-white/10 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300">GSAP</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">
+                                        Year</h4>
+                                    <p class="text-slate-600 dark:text-slate-400">2026</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919500928947" target="_blank" aria-label="Chat WhatsApp"
+        class="fixed bottom-8 right-8 z-[60] w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300 hoverable magnetic-btn group">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-30 animate-ping"></span>
+        <i class="fab fa-whatsapp text-3xl leading-none z-10 group-hover:rotate-12 transition-transform"></i>
+    </a>
+
+    <button id="scrollToTopBtn" aria-label="Gulir ke Atas"
+        class="fixed bottom-28 right-8 z-50 w-12 h-12 bg-white dark:bg-surface border border-slate-200 dark:border-white/20 rounded-full flex items-center justify-center text-slate-600 dark:text-white shadow-lg translate-y-20 opacity-0 transition-all duration-300 hover:border-primary hover:text-primary hover:-translate-y-1 hoverable focus:outline-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
