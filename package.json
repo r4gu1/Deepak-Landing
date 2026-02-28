@@ -1,11 +1,12 @@
 {
   "name": "Portfolio",
   "version": "1.0.0",
-  "description": "![Logo](Demo.png)",
-  "main": "index.js",
+  "description": "Deepak - Performance Marketing Expert Portfolio",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite Portfolio9"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "",
