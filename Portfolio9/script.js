@@ -1,29 +1,48 @@
-import { SpeedInsights } from "@vercel/speed-insights"
+import { injectSpeedInsights } from "@vercel/speed-insights"
 
 // Initialize Vercel Speed Insights
-SpeedInsights()
+try {
+    injectSpeedInsights()
+} catch (e) {
+    console.warn("Speed Insights failed to load", e)
+}
 
-// === PRELOADER ===
-window.addEventListener('load', () => {
+// === PRELOADER & INITIALIZATION ===
+const init = () => {
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.classList.add('hide');
-        setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 600);
-    }, 1000);
+    const yearEl = document.getElementById('year');
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hide');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 600);
+        }, 800);
+    }
+
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+
     updateTime();
     setInterval(updateTime, 1000);
-});
+};
+
+// Modules run after DOM is parsed, but window 'load' ensures images etc are ready.
+// However, we want the site to be interactive ASAP.
+if (document.readyState === 'complete') {
+    init();
+} else {
+    window.addEventListener('load', init);
+}
 
 // === LOCAL TIME LOGIC ===
 function updateTime() {
     const timeDisplay = document.getElementById('local-time');
     if (timeDisplay) {
         const now = new Date();
-        timeDisplay.textContent = now.toLocaleTimeString('id-ID', {
+        timeDisplay.textContent = now.toLocaleTimeString('en-US', {
             hour: '2-digit',
             minute: '2-digit',
             hour12: false
