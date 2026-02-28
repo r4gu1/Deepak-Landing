@@ -1,3 +1,8 @@
+import { SpeedInsights } from "@vercel/speed-insights"
+
+// Initialize Vercel Speed Insights
+SpeedInsights()
+
 // === PRELOADER ===
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
