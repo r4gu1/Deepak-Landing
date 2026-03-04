@@ -270,12 +270,38 @@ contactForm.addEventListener('submit', (e) => {
     btn.innerHTML = '<i class="fas fa-circle-notch animate-spin"></i> Sending...';
     btn.disabled = true;
 
-    setTimeout(() => {
-        showToast('Your form is submitted successfully.');
-        e.target.reset();
+    const name = document.getElementById('sender_name').value;
+    const email = document.getElementById('sender_email').value;
+    const message = document.getElementById('sender_message').value;
+
+    const body = `Name: ${name} <br/> Email: ${email} <br/> Message: ${message}`;
+
+    Email.send({
+        Host: "smtp.gmail.com",
+        Username: "deepakugin@gmail.com",
+        Password: "gokr ntlu yili ioka",
+        To: "deepakugin@gmail.com",
+        From: "deepakugin@gmail.com",
+        Subject: "New Contact Form Submission from " + name,
+        Body: body
+    }).then(
+        response => {
+            if (response === "OK") {
+                showToast('Your form is submitted successfully.');
+                e.target.reset();
+            } else {
+                showToast('Failed to send message. ' + response, 'error');
+                console.error("SMTP Error:", response);
+            }
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    ).catch(error => {
+        showToast('An error occurred. Please try again.', 'error');
+        console.error("SMTP Exception:", error);
         btn.innerHTML = originalText;
         btn.disabled = false;
-    }, 1500);
+    });
 });
 
 // === SCROLL REVEAL ANIMATION [MODERN] ===

@@ -70,6 +70,9 @@
 
     <!-- External Styles -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- SMTP JS -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 
 <body
@@ -120,6 +123,8 @@
                     class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Skill</a>
                 <a href="#experience"
                     class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Experience</a>
+                <a href="#achievements"
+                    class="nav-link text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-white transition-colors hoverable magnetic-btn">Achievements</a>
                 <a href="#contact"
                     class="px-5 py-2 bg-slate-900 dark:bg-white text-white dark:text-black rounded-full font-bold text-xs hover:scale-105 transition-transform hoverable magnetic-btn">Hire
                     Me</a>
@@ -147,6 +152,8 @@
         <a href="#skill" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Skills</a>
         <a href="#experience"
             class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Experience</a>
+        <a href="#achievements"
+            class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Achievements</a>
         <a href="#contact" class="text-3xl font-display font-bold mobile-link hover:text-primary hoverable">Contact</a>
         <button id="close-menu" aria-label="Tutup Menu"
             class="absolute top-8 right-8 text-slate-500 hover:text-black dark:hover:text-white hoverable">
@@ -267,7 +274,7 @@
                         food, manufacturing, and real estate industries.
                     </p>
                     <p class="text-lg italic text-primary font-semibold">
-                        "Marketing should directly impact revenue ” not just impressions."
+                        "Marketing should directly impact revenue not just impressions."
                     </p>
                 </div>
                 <div class="relative reveal-on-scroll h-[400px] flex items-center justify-center">
@@ -675,6 +682,269 @@
                 </div>
     </section>
 
+    <!-- Industries Section -->
+    <section id="industries" class="section-spy py-20 bg-white dark:bg-dark relative z-10">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2
+                    class="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 uppercase tracking-wider">
+                    Industries I Have Worked With<span class="text-primary">.</span>
+                </h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">
+                    I have successfully managed and scaled performance marketing campaigns across multiple diverse
+                    industries, delivering consistent growth and high impact.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <!-- Education -->
+                <div class="group reveal-on-scroll">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 text-3xl group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span
+                            class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight">Education</span>
+                    </div>
+                </div>
+
+                <!-- Real Estate -->
+                <div class="group reveal-on-scroll delay-100">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-3xl group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <span class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight">Real
+                            Estate</span>
+                    </div>
+                </div>
+
+                <!-- Travel -->
+                <div class="group reveal-on-scroll delay-200">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-sky-500/10 flex items-center justify-center text-sky-500 text-3xl group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-plane-departure"></i>
+                        </div>
+                        <span
+                            class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight">Travel</span>
+                    </div>
+                </div>
+
+                <!-- Industrial Warehousing -->
+                <div class="group reveal-on-scroll delay-300">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-500 text-3xl group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <span
+                            class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight leading-tight">Industrial
+                            Warehousing</span>
+                    </div>
+                </div>
+
+                <!-- Food & Beverage -->
+                <div class="group reveal-on-scroll delay-400">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 text-3xl group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <span class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight">Food &
+                            Beverage</span>
+                    </div>
+                </div>
+
+                <!-- Sports -->
+                <div class="group reveal-on-scroll delay-500">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-500 text-3xl group-hover:bg-red-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-volleyball-ball"></i>
+                        </div>
+                        <span
+                            class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight">Sports</span>
+                    </div>
+                </div>
+
+                <!-- Cosmetics -->
+                <div class="group reveal-on-scroll delay-600">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-pink-500/10 flex items-center justify-center text-pink-500 text-3xl group-hover:bg-pink-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <span
+                            class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight">Cosmetics</span>
+                    </div>
+                </div>
+
+                <!-- Lift Manufacturing -->
+                <div class="group reveal-on-scroll delay-700">
+                    <div
+                        class="p-8 rounded-3xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col items-center justify-center gap-4 transition-all duration-500 hover:border-primary/50 hover:bg-white dark:hover:bg-white/10 hover:-translate-y-2 hover:shadow-xl hover:shadow-primary/5">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 text-3xl group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-elevator"></i>
+                        </div>
+                        <span
+                            class="font-bold text-slate-800 dark:text-slate-200 text-center tracking-tight leading-tight">Lift
+                            Manufacturing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section-spy py-24 bg-slate-900 text-white relative overflow-hidden z-10">
+        <!-- Glowing Ambient Background -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 opacity-30">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 opacity-20">
+        </div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="text-center mb-20 reveal-on-scroll">
+                <span class="text-primary font-bold tracking-[0.3em] uppercase text-sm mb-4 block">Proven Results</span>
+                <h2 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                    Key Achievements<span class="text-primary">.</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-primary to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Achievement 1 -->
+                <div class="achievement-card reveal-on-scroll lg:col-span-2 group">
+                    <div
+                        class="flex flex-col h-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px] hover:border-primary/50 transition-all duration-500">
+                        <div class="flex items-center gap-6 mb-8">
+                            <div
+                                class="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-4xl shadow-lg shadow-primary/25">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-4xl md:text-5xl font-bold font-display bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
+                                    ₹275<span class="text-primary">+</span> Cr
+                                </h3>
+                                <p class="text-primary font-semibold tracking-wider uppercase text-xs mt-1">Sales
+                                    Generated</p>
+                            </div>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4 text-white">Hyderabad Property Launch</h4>
+                        <p class="text-slate-400 leading-relaxed text-lg">
+                            Executed high-performance marketing campaigns that contributed to generating ₹275+ Crore in
+                            sales during a major Hyderabad property launch through strategic targeting, optimized lead
+                            generation, and data-driven campaign execution.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-card reveal-on-scroll delay-100 group">
+                    <div
+                        class="flex flex-col h-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px] hover:border-primary/50 transition-all duration-500">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-3xl mb-8 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold font-display mb-2 text-white">₹10 Cr <span
+                                class="text-emerald-400">/ 1 Week</span></h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            Achieved an outstanding sales milestone of ₹10 Crores within just one week by executing
+                            high-impact lead generation campaigns for Casagrand, demonstrating both strategic precision
+                            and performance-driven execution.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-white/5">
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">Casagrand
+                                Success</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="achievement-card reveal-on-scroll delay-200 group">
+                    <div
+                        class="flex flex-col h-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px] hover:border-primary/50 transition-all duration-500">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-400 text-3xl mb-8 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold font-display mb-2 text-white">12.7x <span
+                                class="text-sky-400">ROAS</span></h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            Executed performance-driven campaigns across Meta and Google Ads, delivering up to 9.8x and
+                            12.7x ROAS through strategic targeting, funnel optimization, and continuous creative
+                            testing.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-white/5">
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">Performance
+                                Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 4 -->
+                <div class="achievement-card reveal-on-scroll delay-300 group">
+                    <div
+                        class="flex flex-col h-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px] hover:border-primary/50 transition-all duration-500">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-amber-500/20 flex items-center justify-center text-amber-400 text-3xl mb-8 group-hover:bg-amber-500 group-hover:text-white transition-all">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold font-display mb-2 text-white">4x <span
+                                class="text-amber-400">Organic</span></h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            Implemented structured SEO strategies that significantly improved search rankings and
+                            contributed to nearly 4x growth in organic revenue through better visibility and consistent
+                            optimization.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-white/5">
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">SEO
+                                Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 5 -->
+                <div class="achievement-card reveal-on-scroll delay-400 group">
+                    <div
+                        class="flex flex-col h-full bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-[32px] hover:border-primary/50 transition-all duration-500">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 text-3xl mb-8 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold font-display mb-2 text-white">3x <span
+                                class="text-purple-400">Enrollments</span></h3>
+                        <p class="text-slate-400 leading-relaxed mb-6">
+                            Implemented performance-driven marketing strategies and optimized acquisition funnels to
+                            successfully increase course enrollments by 3x.
+                        </p>
+                        <div class="mt-auto pt-6 border-t border-white/5">
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-slate-500">EdTech
+                                Scaling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section id="contact" class="section-spy py-24 md:py-32 relative overflow-hidden bg-slate-100 dark:bg-[#080808]">
         <div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
 
@@ -731,20 +1001,20 @@
                     <form class="space-y-6" id="contact-form">
                         <div>
                             <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Name</label>
-                            <input type="text"
+                            <input type="text" id="sender_name"
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn"
                                 placeholder="Your Name" required>
                         </div>
                         <div>
                             <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Email</label>
-                            <input type="email"
+                            <input type="email" id="sender_email"
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn"
                                 placeholder="your@email.com" required>
                         </div>
                         <div>
                             <label
                                 class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Message</label>
-                            <textarea rows="4"
+                            <textarea rows="4" id="sender_message"
                                 class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all dark:text-white hoverable magnetic-btn"
                                 placeholder="Tell me about your campaign goals, budget, and industry..."
                                 required></textarea>
