@@ -276,32 +276,53 @@ contactForm.addEventListener('submit', (e) => {
 
     const body = `Name: ${name} <br/> Email: ${email} <br/> Message: ${message}`;
 
-    Email.send({
-        Host: "smtp.gmail.com",
-        Username: "deepakugin@gmail.com",
-        Password: "gokr ntlu yili ioka",
-        To: "deepakugin@gmail.com",
-        From: "deepakugin@gmail.com",
-        Subject: "New Contact Form Submission from " + name,
-        Body: body
-    }).then(
-        response => {
-            if (response === "OK") {
-                showToast('Your form is submitted successfully.');
-                e.target.reset();
-            } else {
-                showToast('Failed to send message. ' + response, 'error');
-                console.error("SMTP Error:", response);
+    try {
+        if (typeof Email === 'undefined') {
+            throw new Error("SMTP.js script not loaded. Please disable your adblocker or check your connection.");
+        }
+
+        const password = "gokr ntlu yili ioka".replace(/\s+/g, '');
+
+        const sendPromise = Email.send({
+            Host: "smtp.gmail.com",
+            Username: "deepakugin@gmail.com",
+            Password: password,
+            To: "deepakugin@gmail.com",
+            From: "deepakugin@gmail.com",
+            Subject: "New Contact Form Submission from " + name,
+            Body: body
+        });
+
+        // Timeout to handle network hangs or adblockers silently killing requests
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error("Request timed out. Server or network might be unstable.")), 15000);
+        });
+
+        Promise.race([sendPromise, timeoutPromise]).then(
+            response => {
+                if (response === "OK") {
+                    showToast('Your form is submitted successfully.');
+                    e.target.reset();
+                } else {
+                    showToast('Failed to send message: ' + response, 'error');
+                    console.error("SMTP Error:", response);
+                }
+                btn.innerHTML = originalText;
+                btn.disabled = false;
             }
+        ).catch(error => {
+            showToast('An error occurred. ' + (error.message || error), 'error');
+            console.error("SMTP Exception:", error);
             btn.innerHTML = originalText;
             btn.disabled = false;
-        }
-    ).catch(error => {
-        showToast('An error occurred. Please try again.', 'error');
-        console.error("SMTP Exception:", error);
+        });
+
+    } catch (err) {
+        showToast(err.message || 'An unexpected error occurred.', 'error');
+        console.error("Sync Error:", err);
         btn.innerHTML = originalText;
         btn.disabled = false;
-    });
+    }
 });
 
 // === SCROLL REVEAL ANIMATION [MODERN] ===
